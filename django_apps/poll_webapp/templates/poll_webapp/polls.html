@@ -1,0 +1,16 @@
+{% extends "poll_webapp/base.html" %}
+{% block content %}
+	<h1>New Polls page</h1>
+	{% for poll in polls_obj %}
+		<article class="media content-section">
+		  <div class="media-body">
+		    <div class="article-metadata">
+		      <a class="mr-2" href="#">{{ poll.id }}</a>
+		      <small class="text-muted">{{ poll.date_posted|date:"F d, Y" }}</small>
+		    </div>
+		    <h2><a class="article-title" href="#">{{ poll.title }}</a></h2>
+		    <p class="article-content">{{ poll.poll_desc}}</p>
+		  </div>
+		</article>
+	{% endfor %}
+{% endblock content %}

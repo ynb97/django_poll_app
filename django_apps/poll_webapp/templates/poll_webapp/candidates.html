@@ -1,0 +1,16 @@
+{% extends "poll_webapp/base.html" %}
+{% block content %}
+	<h1>New Candidates page</h1>
+	{% for cand in cand_obj %}
+		<article class="media content-section">
+		  <div class="media-body">
+		    <div class="article-metadata">
+		      <a class="mr-2" href="#">Candidate-id: {{ cand.id }}</a>
+		      <!-- <small class="text-muted">{{ cand.date_posted }}</small> -->
+		    </div>
+		    <h3><a class="article-title" href="#">{{ cand.cname }}</a></h3>
+		    <p class="article-content">{{ cand.votes}}</p>
+		  </div>
+		</article>
+	{% endfor %}
+{% endblock content %}
