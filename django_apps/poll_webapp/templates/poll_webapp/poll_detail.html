@@ -1,0 +1,29 @@
+{% extends "poll_webapp/base.html" %}
+{% block content %}
+	<h1>Poll Details</h1>
+		<article class="media content-section">
+		  <div class="media-body">
+		    <div class="article-metadata">
+		      <small class="text-muted">{{ object.title }}</small>
+		      <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+		    </div>
+		    <h2 class="article-title">{{ object.id }}</h2>
+		    <div class="article-metadata">
+		    	<form action="{% url 'poll-vote' object.id %}" method="POST">
+					{% csrf_token %}
+					<feildset class="form-group">
+						<!-- <legend class="border-bottom mb-4">Vote form
+						</legend> -->
+							{% for ops in object.poll_options_set.all %}
+							<input type="radio" name="ops" value="{{ ops.id }}">{{ ops.option_text }}</label><br />
+						<!-- <small class="text-muted">({{ ops.id }}) {{ ops.option_text }}</small> -->
+						{% endfor %}
+					</feildset>
+					<div class="form-group">
+						<input class="btn btn-outline-info" type="submit" value="Vote!" />
+					</div>
+				</form>
+		    </div>
+		  </div>
+		</article>
+{% endblock content %}

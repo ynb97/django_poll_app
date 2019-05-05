@@ -1,5 +1,15 @@
 {% extends "poll_webapp/base.html" %}
-{% load crispy_forms_tags %}
 {% block content %}
-	<h1>{{ user.username }}</h1>
+	<h1>Live Polls</h1>
+	{% for poll in polls_obj.user_set.all %}
+		<article class="media content-section">
+		  <div class="media-body">
+		    <div class="article-metadata">
+		      <!-- <a class="mr-2" href="#">{{ poll.question_text }}</a> -->
+		      <small class="text-muted">{{ poll.date_posted|date:"F d, Y" }}</small>
+		    </div>
+		    <h2><a class="article-title" href="{% url 'poll-detail' poll.id %}">{{ poll.title }}</a></h2>
+		  </div>
+		</article>
+	{% endfor %}
 {% endblock content %}
