@@ -8,7 +8,7 @@
 		      <small class="text-muted">{{ poll.title }}</small>
 		      <small class="text-muted">{{ poll.date_posted|date:"F d, Y" }}</small>
 		    </div>
-		    <h2 class="article-title">{{ poll.id }}</h2>
+		    <h2 class="article-title">{{ poll.question_text }}</h2>
 		    <div class="article-metadata">
 				{% for ops in poll.poll_options_set.all %}
 				<small>Id-{{ ops.id }} Value-{{ ops.option_text }} Votes-{{ ops.poll_votes_set.count }} </small><br />
